@@ -11,6 +11,8 @@ def run_website_prediction(data, classifiers, classifier_list, classifier_params
     if len(classifier_list) != len(classifier_params):
         return "Need to include parameters for each classifier"
 
+    classifiers = Classifiers(classifier_list)
+    data = data_processor(df, 'cleaned_website_text', df.Category)
     scores = []
     params = []
     class_type = []
@@ -52,15 +54,14 @@ def run_website_prediction(data, classifiers, classifier_list, classifier_params
         class_type.append('xgb')
 
 
-    return scores, params, cass_type
+    return scores, params, class_type
 
 
 
 if __name__ == '__main__':
+    classifier_list = ['rfc', 'mnb', 'xgb']
     df_file = r'C:\Users\Tommy\AppData\Local\Programs\Python\Python37\NLP\Website Classification\website_classification.csv'
     df=pd.read_csv(df_file)
-    classifiers = Classifiers(['rfc', 'mnb', 'xgb'])
-    data = data_processor(df, 'cleaned_website_text', df.Category)
 
     rfc_params = {
     'max_depth': [20, 60, 100],
@@ -70,7 +71,7 @@ if __name__ == '__main__':
 
     xgb_params = {'n_estimators':[200,600],'max_depth':[20,50],'learning_rate':[0.1,0.01]}
 
-    scores, params, class_type = run_website_prediction(data, classifiers, ['rfc', 'mnb', 'xgb'], [rfc_params, mnb_params, xgb_params], [5, 5, 3])
+    scores, params, class_type = run_website_prediction(df, classifier_list, [rfc_params, mnb_params, xgb_params], [5, 5, 3])
 
     
     
