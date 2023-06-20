@@ -60,7 +60,7 @@ def run_website_prediction(data, classifiers, classifier_list, classifier_params
 
 if __name__ == '__main__':
     classifier_list = ['rfc', 'mnb', 'xgb']
-    df_file = r'C:\Users\Tommy\AppData\Local\Programs\Python\Python37\NLP\Website Classification\website_classification.csv'
+    df_file = r'.\website_classification.csv'
     df=pd.read_csv(df_file)
 
     rfc_params = {
