@@ -14,5 +14,5 @@ up to 4 orders of magnitude faster. Given more time and more parameters to explo
 its possible the gradient boost could have provided better performance, but the increase
 would be nearly negligible given the loss of efficiency
 
-The produced an accuracy score of 0.884, with an alpha of 0.1 with the given parameters and 
+The MNB produced an accuracy score of 0.884, with an alpha of 0.1 with the given parameters and 
 cross validation attempts
